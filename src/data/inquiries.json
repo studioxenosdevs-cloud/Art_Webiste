@@ -1,0 +1,41 @@
+[
+  {
+    "id": "inq-001",
+    "artworkId": "art-005",
+    "artworkTitle": "Surah Ar-Rahman — Illuminated Script",
+    "customerName": "Ayesha Khan",
+    "email": "ayesha.khan@example.com",
+    "phone": "+92 300 1234567",
+    "shippingAddress": "House 12, Street 5, DHA Phase 6, Lahore, Pakistan",
+    "customFraming": true,
+    "notes": "Ornate gold frame with double matting",
+    "status": "completed",
+    "createdAt": "2025-08-15T10:30:00Z"
+  },
+  {
+    "id": "inq-002",
+    "artworkId": "art-006",
+    "artworkTitle": "Personalized Name Calligraphy — Pink & Gold",
+    "customerName": "Hamza Siddiqui",
+    "email": "hamza.s@example.com",
+    "phone": "+92 321 9876543",
+    "shippingAddress": "Apartment 4B, Clifton Tower, Karachi, Pakistan",
+    "customFraming": false,
+    "notes": "",
+    "status": "contacted",
+    "createdAt": "2025-08-20T14:15:00Z"
+  },
+  {
+    "id": "inq-003",
+    "artworkId": "art-002",
+    "artworkTitle": "Sunset Ocean Waves",
+    "customerName": "Fatima Noor",
+    "email": "fatima.noor@example.com",
+    "phone": "+92 333 4567890",
+    "shippingAddress": "Flat 7, Bahria Town Phase 4, Rawalpindi, Pakistan",
+    "customFraming": true,
+    "notes": "Prefer a light wooden frame",
+    "status": "new",
+    "createdAt": "2025-08-25T09:00:00Z"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "art-001",
+    "title": "Bismillah — Gold Leaf Calligraphy",
+    "category": "calligraphy",
+    "medium": "Gold Leaf & Ink on Canvas",
+    "dimensions": "18 × 24 inches",
+    "pricePKR": 15000,
+    "status": "available",
+    "imageUrl": "https://images.pexels.com/photos/19892296/pexels-photo-19892296.jpeg?auto=compress&cs=tinysrgb&h=900&w=700",
+    "description": "Traditional Arabic calligraphy rendered in 24k gold leaf on textured canvas."
+  },
+  {
+    "id": "art-002",
+    "title": "Sunset Ocean Waves",
+    "category": "nature",
+    "medium": "Acrylic on Canvas",
+    "dimensions": "24 × 36 inches",
+    "pricePKR": 18000,
+    "status": "available",
+    "imageUrl": "https://images.pexels.com/photos/10204853/pexels-photo-10204853.jpeg?auto=compress&cs=tinysrgb&h=900&w=700",
+    "description": "A luminous seascape capturing the sun melting into the horizon in layered acrylics."
+  },
+  {
+    "id": "art-003",
+    "title": "Starry Night Palm Trees",
+    "category": "nature",
+    "medium": "Oil on Canvas",
+    "dimensions": "24 × 36 inches",
+    "pricePKR": 22000,
+    "status": "available",
+    "imageUrl": "https://images.pexels.com/photos/18635120/pexels-photo-18635120.jpeg?auto=compress&cs=tinysrgb&h=900&w=700",
+    "description": "A lone palm under a starlit desert sky with ethereal light trails in oil."
+  },
+  {
+    "id": "art-004",
+    "title": "Whirling Dervish — Sufi Meditation",
+    "category": "sufi",
+    "medium": "Acrylic on Canvas",
+    "dimensions": "18 × 24 inches",
+    "pricePKR": 16000,
+    "status": "available",
+    "imageUrl": "https://images.pexels.com/photos/11673768/pexels-photo-11673768.jpeg?auto=compress&cs=tinysrgb&h=900&w=700",
+    "description": "A Sufi dervish in spiritual motion, rendered in flowing acrylics with golden accents."
+  },
+  {
+    "id": "art-005",
+    "title": "Surah Ar-Rahman — Illuminated Script",
+    "category": "calligraphy",
+    "medium": "Gold Leaf & Gouache on Canvas",
+    "dimensions": "24 × 24 inches",
+    "pricePKR": 28000,
+    "status": "sold",
+    "imageUrl": "https://images.pexels.com/photos/29319232/pexels-photo-29319232.jpeg?auto=compress&cs=tinysrgb&h=900&w=700",
+    "description": "An illuminated manuscript-style piece with intricate borders and gold accents."
+  },
+  {
+    "id": "art-006",
+    "title": "Personalized Name Calligraphy — Pink & Gold",
+    "category": "custom",
+    "medium": "Acrylic on Canvas",
+    "dimensions": "12 × 18 inches",
+    "pricePKR": 12000,
+    "status": "sold",
+    "imageUrl": "https://images.pexels.com/photos/32576232/pexels-photo-32576232.jpeg?auto=compress&cs=tinysrgb&h=900&w=700",
+    "description": "A custom personalized name piece with swirling pink and gold — a celebration of identity."
+  }
+]
