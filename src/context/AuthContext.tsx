@@ -1,86 +1,71 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import adminCreds from '@/data/adminCredentials.json';
 import type { AdminCredentials } from '@/types';
-
-const AUTH_TOKEN_KEY = 'zel_brush_admin_token';
-const CREDENTIALS_KEY = 'zel_brush_admin_credentials';
+import { supabase } from '@/lib/supabase';
 
 interface AuthContextValue {
-  isAuthenticated: boolean;
-  credentials: AdminCredentials;
-  login: (username: string, password: string) => boolean;
-  logout: () => void;
-  updateCredentials: (patch: Partial<AdminCredentials>) => void;
+    isAuthenticated: boolean;
+    isInitializing: boolean;
+    user: any | null;
+    login: (email: string, password: string) => Promise<boolean>;
+    logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [credentials, setCredentials] = useLocalStorage<AdminCredentials>(
-    CREDENTIALS_KEY,
-    adminCreds as AdminCredentials
-  );
-  const [token, setToken] = useState<string | null>(() => {
-    try {
-      return localStorage.getItem(AUTH_TOKEN_KEY);
-    } catch {
-      return null;
-    }
-  });
+    const [user, setUser] = useState<any | null>(null);
+    const [isInitializing, setIsInitializing] = useState(true);
 
-  const login = useCallback(
-    (username: string, password: string): boolean => {
-      if (username === credentials.username && password === credentials.password) {
-        const mockToken = btoa(`${username}:${Date.now()}`);
+    useEffect(() => {
+        // Get current session
+        (async () => {
+            try {
+                const {
+                    data: { session },
+                } = await supabase.auth.getSession();
+                setUser(session?.user ?? null);
+            } catch (e) {
+                setUser(null);
+            } finally {
+                setIsInitializing(false);
+            }
+        })();
+
+        const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+            setIsInitializing(false);
+        });
+
+        const subscription = (data as any)?.subscription;
+
+        return () => {
+            if (subscription && typeof subscription.unsubscribe === 'function') subscription.unsubscribe();
+        };
+    }, []);
+
+    const login = useCallback(async (email: string, password: string) => {
         try {
-          localStorage.setItem(AUTH_TOKEN_KEY, mockToken);
+            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+            if (error) return false;
+            setUser(data.user ?? null);
+            return true;
         } catch {
-          /* ignore */
+            return false;
         }
-        setToken(mockToken);
-        return true;
-      }
-      return false;
-    },
-    [credentials]
-  );
+    }, []);
 
-  const logout = useCallback(() => {
-    try {
-      localStorage.removeItem(AUTH_TOKEN_KEY);
-    } catch {
-      /* ignore */
-    }
-    setToken(null);
-  }, []);
+    const logout = useCallback(async () => {
+        await supabase.auth.signOut();
+        setUser(null);
+    }, []);
 
-  const updateCredentials = useCallback(
-    (patch: Partial<AdminCredentials>) => {
-      setCredentials((prev) => ({ ...prev, ...patch }));
-    },
-    [setCredentials]
-  );
+    const value = useMemo<AuthContextValue>(() => ({ isAuthenticated: !!user, isInitializing, user, login, logout }), [user, isInitializing, login, logout]);
 
-  const value = useMemo<AuthContextValue>(
-    () => ({
-      isAuthenticated: !!token,
-      credentials,
-      login,
-      logout,
-      updateCredentials,
-    }),
-    [token, credentials, login, logout, updateCredentials]
-  );
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
-  return ctx;
+    const ctx = useContext(AuthContext);
+    if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+    return ctx;
 }
-
-// Re-export for ProtectedRoute convenience
-export { AUTH_TOKEN_KEY };

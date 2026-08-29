@@ -2,11 +2,14 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth();
+    const { isAuthenticated, isInitializing } = useAuth();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
-  }
+    // While we restore session, don't redirect; show nothing (or spinner)
+    if (isInitializing) return null;
 
-  return <>{children}</>;
+    if (!isAuthenticated) {
+        return <Navigate to="/admin/login" replace />;
+    }
+
+    return <>{children}</>;
 }
