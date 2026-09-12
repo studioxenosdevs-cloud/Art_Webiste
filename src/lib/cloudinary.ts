@@ -5,8 +5,8 @@
  * @returns The secure URL of the uploaded image on Cloudinary.
  */
 export async function uploadToCloudinary(file: File): Promise<string> {
-    const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME;
-    const uploadPreset = import.meta.env.CLOUDINARY_UPLOAD_PRESET;
+    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
     if (!cloudName || !uploadPreset) {
         throw new Error(
