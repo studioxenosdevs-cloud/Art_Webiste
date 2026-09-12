@@ -5,12 +5,12 @@
  * @returns The secure URL of the uploaded image on Cloudinary.
  */
 export async function uploadToCloudinary(file: File): Promise<string> {
-    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-    const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+    const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = import.meta.env.CLOUDINARY_UPLOAD_PRESET;
 
     if (!cloudName || !uploadPreset) {
         throw new Error(
-            'Cloudinary environment variables (VITE_CLOUDINARY_CLOUD_NAME, VITE_CLOUDINARY_UPLOAD_PRESET) are not configured. Please check your .env.local file.',
+            'Cloudinary environment variables (CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET) are not configured. Please check your .env.local file.',
         );
     }
 
