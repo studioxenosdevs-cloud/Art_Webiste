@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+
+    <!-- Royal Violet Gradient -->
+    <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a78bfa" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+
+    <!-- Pure 24k Gold Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="70%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <!-- Outer Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Container with subtle rounded luxury frame -->
+  <rect width="100" height="100" rx="24" fill="url(#bgGrad)" />
+  <rect x="1.5" y="1.5" width="97" height="97" rx="22.5" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.4" />
+
+  <!-- Sacred Geometry Ambient Circle -->
+  <circle cx="50" cy="50" r="34" stroke="url(#violetGrad)" stroke-width="1" stroke-dasharray="3 3" opacity="0.35" />
+
+  <!-- Artist Palette Crescent Silhouette -->
+  <path d="M30 68 C22 60 22 42 32 32 C42 22 60 22 68 30 C76 38 78 54 70 64 C64 72 52 74 44 70 C40 68 38 62 42 58 C45 55 48 56 50 54 C53 51 51 47 47 48 C41 49 36 53 34 58 C32 62 31 66 30 68 Z"
+        fill="url(#violetGrad)" opacity="0.25" />
+
+  <!-- Calligraphy Flourish & Master Brush Stroke -->
+  <path d="M28 66 C32 54 42 42 54 32 C62 25 72 20 76 22 C78 23 76 28 70 34 C60 44 48 56 36 66 C32 70 26 72 24 70 C22 68 25 65 28 66 Z"
+        fill="url(#goldGrad)" filter="url(#glow)" />
+
+  <!-- Brush Tip / Gold Leaf Quill Tip Accent -->
+  <path d="M72 24 L78 18 C80 16 83 17 82 20 L76 26 Z" fill="url(#goldGrad)" />
+
+  <!-- Paint/Gilding Droplets -->
+  <circle cx="68" cy="46" r="3" fill="url(#goldGrad)" opacity="0.9" />
+  <circle cx="44" cy="38" r="2" fill="#c4b5fd" opacity="0.8" />
+  <circle cx="56" cy="62" r="2.5" fill="url(#goldGrad)" opacity="0.85" />
+</svg>
